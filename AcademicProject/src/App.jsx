@@ -1,29 +1,31 @@
+// src/App.jsx
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// Pages & Components
 import Mainpage from "./Component1/Mainpage";
 import HomePage from "./HomePage";
 import LoginPage from "./Component1/LoginPage";
 import SignupPage from "./Component1/SignupPage";
-import RithuDes from "./RithuDes";
+import AnitaDongre from "./AnitaDongre";
+import RituDesigner from "./Component1/Component4/RituDesigner";
 import LocateStore from "./LocateStore";
 import Contect from "./Contect";
 import Whishlist from "./Whishlist";
-import AnitaDongre from "./AnitaDongre.jsx";
-import AdminDashboard from "./AdminDashboard.jsx";
-import Neetlulla from "./Component1/Component2/Neetlulla.jsx";
-import LehengaTabs from "./Component1/Component2/LehengaTabs.jsx";
-import ProductPage from "./ProductPage.jsx";
+import AdminDashboard from "./AdminDashboard";
+import ProductPage from "./ProductPage";
+
+// Category Pages
 import Velvet from "./Component1/Component3/Velvet";
 import Denim from "./Component1/Component3/Denim";
 import Georgette from "./Component1/Component3/Georgette";
-import Srees from "./Component1/Component3/Sarees";
+import Sarees from "./Component1/Component3/Sarees";
 import Livin from "./Component1/Component3/Livin";
 import Silk from "./Component1/Component3/Silk";
 import SkirtsShorts from "./Component1/Component3/SkirtsShorts";
 
-
 export default function App() {
+  // Wishlist State with LocalStorage
   const [wishlist, setWishlist] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("wishlist_sarees_v1")) || [];
@@ -33,59 +35,99 @@ export default function App() {
   });
 
   useEffect(() => {
-    try {
-      localStorage.setItem("wishlist_sarees_v1", JSON.stringify(wishlist));
-    } catch { }
+    localStorage.setItem("wishlist_sarees_v1", JSON.stringify(wishlist));
   }, [wishlist]);
 
-  const toggleWishlist = (id) =>
+  const toggleWishlist = (id) => {
     setWishlist((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id)
+        ? prev.filter((item) => item !== id)
+        : [...prev, id]
     );
+  };
 
   return (
     <Router>
       <Routes>
 
+        {/* ================= HOME ================= */}
         <Route path="/" element={<Mainpage />} />
-        <Route path="/Home" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
 
+        {/* ================= AUTH ================= */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
+        {/* ================= DESIGNERS ================= */}
         <Route
-          path="/Anita"
-          element={<AnitaDongre wishlist={wishlist} toggleWishlist={toggleWishlist} />}
+          path="/anita"
+          element={
+            <AnitaDongre
+              wishlist={wishlist}
+              toggleWishlist={toggleWishlist}
+            />
+          }
         />
 
-        {/* ✔ Directly show Neeta content without NeetaPage.jsx file */}
+        {/* SUPPORT BOTH /Rithu AND /ritu */}
         <Route
-          path="/Neeta"
+          path="/Rithu"
           element={
-            <>
-              <Neetlulla />
-              <LehengaTabs wishlist={wishlist} toggleWishlist={toggleWishlist} />
-            </>
+            <RituDesigner
+              wishlist={wishlist}
+              toggleWishlist={toggleWishlist}
+            />
           }
         />
 
         <Route
-          path="/product/:id"
-          element={<ProductPage wishlist={wishlist} toggleWishlist={toggleWishlist} />}
+          path="/ritu"
+          element={
+            <RituDesigner
+              wishlist={wishlist}
+              toggleWishlist={toggleWishlist}
+            />
+          }
         />
 
+        {/* ================= PRODUCT DETAILS ================= */}
+        <Route
+          path="/product/:id"
+          element={
+            <ProductPage
+              wishlist={wishlist}
+              toggleWishlist={toggleWishlist}
+            />
+          }
+        />
+
+        {/* ================= ADMIN ================= */}
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/Rithu" element={<RithuDes />} />
-        <Route path="/LocateStore" element={<LocateStore />} />
-        <Route path="/Contect" element={<Contect />} />
-        <Route path="/Whishlist" element={<Whishlist />} />
+
+        {/* ================= INFO PAGES ================= */}
+        <Route path="/locatestore" element={<LocateStore />} />
+        <Route path="/contact" element={<Contect />} />
+        <Route
+          path="/wishlist"
+          element={
+            <Whishlist
+              wishlist={wishlist}
+              toggleWishlist={toggleWishlist}
+            />
+          }
+        />
+
+        {/* ================= CATEGORIES ================= */}
         <Route path="/velvet" element={<Velvet />} />
         <Route path="/denim" element={<Denim />} />
         <Route path="/georgette" element={<Georgette />} />
-        <Route path="/srees" element={<Srees />} />
+        <Route path="/sarees" element={<Sarees />} />
         <Route path="/livin" element={<Livin />} />
         <Route path="/silk" element={<Silk />} />
         <Route path="/skirts-shorts" element={<SkirtsShorts />} />
+
+        {/* ================= 404 ================= */}
+        <Route path="*" element={<h2 style={{ textAlign: "center", marginTop: "50px" }}>404 Page Not Found</h2>} />
 
       </Routes>
     </Router>
