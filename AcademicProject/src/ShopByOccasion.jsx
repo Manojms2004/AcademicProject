@@ -13,6 +13,7 @@ import { allProducts } from "./ProductsData";
 export default function ShopByOccasion({
   wishlist = [],
   toggleWishlist = () => {},
+  extraProducts = [],
 }) {
   const [selectedCategory, setSelectedCategory] = useState("cotton");
   const scrollRef = useRef(null);
@@ -33,10 +34,13 @@ export default function ShopByOccasion({
     }
   };
 
+  // Merge static + extra designer products
+  const mergedProducts = [...allProducts, ...extraProducts];
+
   const productsToShow =
     selectedCategory === "all"
-      ? allProducts
-      : allProducts.filter(
+      ? mergedProducts
+      : mergedProducts.filter(
           (product) => product.category === selectedCategory
         );
 
@@ -51,7 +55,7 @@ export default function ShopByOccasion({
         Shop by Occasion
       </h2>
 
-      {/* CATEGORY BUTTONS (Removed Ritu & All) */}
+      {/* ✅ CATEGORY BUTTONS (Ritu & Neetululla Removed) */}
       <div className="flex gap-3 justify-center mb-6 flex-wrap">
         {["cotton", "banarasi", "wedding"].map((cat) => (
           <button
@@ -92,7 +96,11 @@ export default function ShopByOccasion({
             >
               <div
                 className="relative overflow-hidden rounded-lg h-[300px] cursor-pointer"
-                onClick={() => navigate(`/product/${product.id}`)}
+                onClick={() =>
+                  navigate(`/product/${product.id}`, {
+                    state: { extraProducts },
+                  })
+                }
               >
                 <img
                   src={product.img}
@@ -140,7 +148,7 @@ export default function ShopByOccasion({
         </button>
       )}
 
-      {/* VIEW ALL BUTTON (BOTTOM) */}
+      {/* VIEW ALL BUTTON */}
       <div className="flex justify-center mt-8">
         <button
           onClick={() => setSelectedCategory("all")}

@@ -1,8 +1,8 @@
-// src/Components/AnitaDongre.jsx
+// src/Components/NeetuLulla.jsx
 import React, { useState } from "react";
-import ShopByOccasion from "./ShopByOccasion";
+import ShopByOccasion from "../../ShopByOccasion";
 
-export default function AnitaDongre({ wishlist, toggleWishlist }) {
+export default function NeetuLulla({ wishlist, toggleWishlist }) {
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [extraProducts, setExtraProducts] = useState([]);
@@ -11,10 +11,10 @@ export default function AnitaDongre({ wishlist, toggleWishlist }) {
     name: "",
     img: "",
     price: "",
-    category: "anitadongre", // 🔥 default category
+    category: "neetululla", // 🔥 default category for Neetu
   });
 
-  const ADMIN_PASSWORD = "anita123"; // 🔐 change if needed
+  const ADMIN_PASSWORD = "neetu123"; // 🔐 change if needed
 
   const handleAdminAccess = () => {
     const enteredPassword = prompt("Enter Designer Password:");
@@ -44,7 +44,7 @@ export default function AnitaDongre({ wishlist, toggleWishlist }) {
       name: formData.name,
       img: formData.img,
       finalPrice: Number(formData.price),
-      rating: 4.8,
+      rating: 4.5,
       reviews: 1,
       category: formData.category,
     };
@@ -55,7 +55,7 @@ export default function AnitaDongre({ wishlist, toggleWishlist }) {
       name: "",
       img: "",
       price: "",
-      category: "anitadongre",
+      category: "neetululla",
     });
   };
 
@@ -67,28 +67,27 @@ export default function AnitaDongre({ wishlist, toggleWishlist }) {
 
         <div className="w-full md:w-2/6">
           <img
-            src="/ad.png"
-            alt="Anita Dongre"
+            src="/neetu.png"
+            alt="Neetu Lulla"
             className="rounded-2xl shadow-xl border-4 border-gray-200"
           />
         </div>
 
         <div className="w-full md:w-2/3">
           <h1 className="text-4xl font-bold mb-4 text-gray-800">
-            Anita Dongre
+            Neetu Lulla
           </h1>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            <b>Anita Dongre</b> is one of India’s most influential fashion
-            designers and the founder of the House of Anita Dongre.
-            She blends traditional Indian craftsmanship with modern elegance,
-            especially in bridal and couture collections.
+            <b>Neetu Lulla</b> is a celebrated Indian fashion designer known
+            for blending contemporary design with traditional elegance.
+            Her collections showcase luxurious fabrics, intricate embroidery,
+            and timeless bridal couture.
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed">
-            A strong advocate of sustainability, she promotes eco-friendly
-            fabrics and empowers rural artisans through ethical fashion.
-            Her creations have gained global recognition.
+            She has styled for films, celebrities, and grand weddings,
+            becoming a global fashion icon in Indian couture.
           </p>
 
           {/* 🔐 Admin Login */}
@@ -123,7 +122,7 @@ export default function AnitaDongre({ wishlist, toggleWishlist }) {
           <input
             type="text"
             name="img"
-            placeholder="Image URL (example: /ad1.png)"
+            placeholder="Image URL (example: /nl1.png)"
             value={formData.img}
             onChange={handleChange}
             className="w-full border p-2 rounded"
@@ -149,8 +148,6 @@ export default function AnitaDongre({ wishlist, toggleWishlist }) {
             <option value="wedding">Wedding</option>
             <option value="ritu">Ritu</option>
             <option value="neetululla">Neetu Lulla</option>
-            <option value="rohitbal">Rohit Bal</option>
-            <option value="anitadongre">Anita Dongre</option>
           </select>
 
           <button

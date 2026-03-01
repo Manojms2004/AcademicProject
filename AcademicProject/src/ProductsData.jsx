@@ -83,6 +83,50 @@ export const rituWeddingProducts = [
   { id: 59, name: "Ritu Desh Exclusive Bridal Kurta Set", img: "/rd29.png", price: 19995, oldPrice: 23995, discount: "16% OFF", finalPrice: 16796, rating: 5.0, reviews: 100 },
   { id: 60, name: "Ritu Desh Designer Wedding Kurta with Dupatta", img: "/rd30.png", price: 21995, oldPrice: 25995, discount: "15% OFF", finalPrice: 18696, rating: 5.0, reviews: 120 },
 ];
+// ------------------- NEETU LULLA COTTON -------------------
+export const neetuCottonProducts = [
+  { id: 31, name: "Neetu Lulla Casual Cotton Kurta Set", img: "/nl1.png", price: 4995, oldPrice: 5995, discount: "17% OFF", finalPrice: 4156, rating: 4.6, reviews: 65 },
+  { id: 32, name: "Neetu Lulla Printed Daily Cotton Kurti with Pants", img: "/nl2.png", price: 5495, oldPrice: 6495, discount: "15% OFF", finalPrice: 4661, rating: 4.7, reviews: 58 },
+  { id: 33, name: "Neetu Lulla Handloom Cotton Kurta Set", img: "/nl3.png", price: 5995, oldPrice: 6995, discount: "14% OFF", finalPrice: 5156, rating: 4.8, reviews: 70 },
+  { id: 34, name: "Neetu Lulla Casual Linen Cotton Kurti", img: "/nl4.png", price: 4995, oldPrice: 5995, discount: "17% OFF", finalPrice: 4156, rating: 4.5, reviews: 50 },
+  { id: 35, name: "Neetu Lulla Modern Cotton Kurta with Palazzo", img: "/nl5.png", price: 6495, oldPrice: 7995, discount: "18% OFF", finalPrice: 5336, rating: 4.9, reviews: 80 },
+  { id: 36, name: "Neetu Lulla Printed Cotton Kurta Set", img: "/nl6.png", price: 5995, oldPrice: 6995, discount: "14% OFF", finalPrice: 5156, rating: 4.7, reviews: 55 },
+  { id: 37, name: "Neetu Lulla Daily Wear Cotton Kurti", img: "/nl7.png", price: 4995, oldPrice: 5995, discount: "17% OFF", finalPrice: 4156, rating: 4.6, reviews: 62 },
+  { id: 38, name: "Neetu Lulla Designer Cotton Kurta Set", img: "/nl8.png", price: 6995, oldPrice: 8495, discount: "18% OFF", finalPrice: 5736, rating: 4.8, reviews: 90 },
+  { id: 39, name: "Neetu Lulla Elegant Printed Kurti Set", img: "/nl9.png", price: 5995, oldPrice: 6995, discount: "14% OFF", finalPrice: 5156, rating: 4.7, reviews: 70 },
+  { id: 40, name: "Neetu Lulla Casual Cotton Kurta with Skirt", img: "/nl10.png", price: 6495, oldPrice: 7995, discount: "18% OFF", finalPrice: 5336, rating: 4.9, reviews: 85 },
+];
+
+// ------------------- NEETU LULLA BANARASI -------------------
+export const neetuBanarasiProducts = [
+  { id: 41, name: "Neetu Lulla Banarasi Silk Kurta Set", img: "/nl11.png", price: 8995, oldPrice: 10995, discount: "18% OFF", finalPrice: 7376, rating: 4.8, reviews: 90 },
+  { id: 42, name: "Neetu Lulla Festive Banarasi Kurti with Palazzo", img: "/nl12.png", price: 7995, oldPrice: 9495, discount: "16% OFF", finalPrice: 6716, rating: 4.7, reviews: 70 },
+  { id: 43, name: "Neetu Lulla Designer Embroidered Kurta", img: "/nl13.png", price: 10995, oldPrice: 12995, discount: "15% OFF", finalPrice: 9346, rating: 4.9, reviews: 100 },
+  { id: 44, name: "Neetu Lulla Banarasi Party Kurti Set", img: "/nl14.png", price: 9495, oldPrice: 10995, discount: "14% OFF", finalPrice: 8166, rating: 4.8, reviews: 85 },
+  { id: 45, name: "Neetu Lulla Exclusive Banarasi Silk Kurta Set", img: "/nl15.png", price: 12995, oldPrice: 14995, discount: "13% OFF", finalPrice: 11286, rating: 4.9, reviews: 110 },
+  { id: 46, name: "Neetu Lulla Banarasi Handloom Kurta", img: "/nl16.png", price: 8995, oldPrice: 10995, discount: "18% OFF", finalPrice: 7376, rating: 4.8, reviews: 95 },
+  { id: 47, name: "Neetu Lulla Party Ready Banarasi Kurti", img: "/nl17.png", price: 7995, oldPrice: 9495, discount: "16% OFF", finalPrice: 6716, rating: 4.7, reviews: 80 },
+  { id: 48, name: "Neetu Lulla Elegant Banarasi Kurta Set", img: "/nl18.png", price: 9995, oldPrice: 11995, discount: "17% OFF", finalPrice: 8296, rating: 4.8, reviews: 90 },
+  { id: 49, name: "Neetu Lulla Banarasi Festive Kurti", img: "/nl19.png", price: 8495, oldPrice: 9995, discount: "15% OFF", finalPrice: 7216, rating: 4.7, reviews: 75 },
+  { id: 50, name: "Neetu Lulla Designer Banarasi Kurta", img: "/nl20.png", price: 11995, oldPrice: 13995, discount: "14% OFF", finalPrice: 10156, rating: 4.9, reviews: 100 },
+];
+
+// ------------------- NEETU LULLA WEDDING -------------------
+export const neetuWeddingProducts = [
+  { id: 51, name: "Neetu Lulla Wedding Special Kurta Set", img: "/nl21.png", price: 17995, oldPrice: 20995, discount: "14% OFF", finalPrice: 15516, rating: 5.0, reviews: 120 },
+  { id: 52, name: "Neetu Lulla Bridal Party Kurti with Lehenga", img: "/nl22.png", price: 19995, oldPrice: 23995, discount: "16% OFF", finalPrice: 16796, rating: 5.0, reviews: 100 },
+  { id: 53, name: "Neetu Lulla Designer Silk Wedding Kurta", img: "/nl23.png", price: 14995, oldPrice: 17995, discount: "17% OFF", finalPrice: 12446, rating: 4.9, reviews: 90 },
+  { id: 54, name: "Neetu Lulla Festive Party Kurti Set", img: "/nl24.png", price: 15995, oldPrice: 18995, discount: "15% OFF", finalPrice: 13596, rating: 4.9, reviews: 80 },
+  { id: 55, name: "Neetu Lulla Bridal Lehenga Kurta", img: "/nl25.png", price: 19995, oldPrice: 23995, discount: "16% OFF", finalPrice: 16796, rating: 5.0, reviews: 110 },
+  { id: 56, name: "Neetu Lulla Party Ready Wedding Kurta Set", img: "/nl26.png", price: 17995, oldPrice: 20995, discount: "14% OFF", finalPrice: 15516, rating: 4.9, reviews: 90 },
+  { id: 57, name: "Neetu Lulla Elegant Bridal Party Kurti", img: "/nl27.png", price: 18995, oldPrice: 21995, discount: "13% OFF", finalPrice: 16526, rating: 5.0, reviews: 95 },
+  { id: 58, name: "Neetu Lulla Festive Wedding Kurta Set", img: "/nl28.png", price: 17995, oldPrice: 20995, discount: "14% OFF", finalPrice: 15516, rating: 4.9, reviews: 85 },
+  { id: 59, name: "Neetu Lulla Exclusive Bridal Kurta Set", img: "/nl29.png", price: 19995, oldPrice: 23995, discount: "16% OFF", finalPrice: 16796, rating: 5.0, reviews: 100 },
+  { id: 60, name: "Neetu Lulla Designer Wedding Kurta with Dupatta", img: "/nl30.png", price: 21995, oldPrice: 25995, discount: "15% OFF", finalPrice: 18696, rating: 5.0, reviews: 120 },
+];
+
+
+
 
 // Helper to attach category
 const addCategory = (products, category) =>
@@ -101,4 +145,8 @@ export const allProducts = [
   ...addCategory(rituCottonProducts, "ritu"),
   ...addCategory(rituBanarasiProducts, "ritu"),
   ...addCategory(rituWeddingProducts, "ritu"),
+   // All Neetu types should filter under "neetululla"
+  ...addCategory(neetuCottonProducts, "neetululla"),
+  ...addCategory(neetuBanarasiProducts, "neetululla"),
+  ...addCategory(neetuWeddingProducts, "neetululla"),
 ];

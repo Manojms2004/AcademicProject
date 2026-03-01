@@ -28,15 +28,15 @@ export default function Footer() {
         </div>
 
         {/* About */}
-        <div>
-          <h3 className="font-semibold mb-4">About</h3>
-          <ul className="space-y-2 text-sm">
-            <li>About Us</li>
-            <li>Decoding the Best Fit</li>
-            <li>Store Locator</li>
-            <li>Blogs</li>
-          </ul>
-        </div>
+        <div className="flex flex-col gap-2 text-sm">
+  <Link to="/about">
+    About Us
+  </Link>
+
+  <Link to="/locatestore" >
+    Store Locator
+  </Link>
+</div>
 
         {/* Social */}
         <div className="space-y-4">

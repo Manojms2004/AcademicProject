@@ -14,8 +14,7 @@ import Contect from "./Contect";
 import Whishlist from "./Whishlist";
 import AdminDashboard from "./AdminDashboard";
 import ProductPage from "./ProductPage";
-
-// Category Pages
+import NeetuLulla from "./Component1/Component4/NeetuLulla";// Category Pages
 import Velvet from "./Component1/Component3/Velvet";
 import Denim from "./Component1/Component3/Denim";
 import Georgette from "./Component1/Component3/Georgette";
@@ -23,6 +22,9 @@ import Sarees from "./Component1/Component3/Sarees";
 import Livin from "./Component1/Component3/Livin";
 import Silk from "./Component1/Component3/Silk";
 import SkirtsShorts from "./Component1/Component3/SkirtsShorts";
+import RohitBal from "./Component1/Component4/RohitBal";
+import Checkout from "./Checkout";
+import About from "./About";
 
 export default function App() {
   // Wishlist State with LocalStorage
@@ -89,6 +91,24 @@ export default function App() {
             />
           }
         />
+        <Route
+          path="/Neeta"
+          element={
+            <NeetuLulla
+              wishlist={wishlist}
+              toggleWishlist={toggleWishlist}
+            />
+          }
+        />
+        <Route
+          path="/rohit"
+          element={
+            <RohitBal
+              wishlist={wishlist}
+              toggleWishlist={toggleWishlist}
+            />
+          }
+        />
 
         {/* ================= PRODUCT DETAILS ================= */}
         <Route
@@ -100,6 +120,7 @@ export default function App() {
             />
           }
         />
+        <Route path="/checkout" element={<Checkout />} />
 
         {/* ================= ADMIN ================= */}
         <Route path="/admin" element={<AdminDashboard />} />
@@ -125,9 +146,9 @@ export default function App() {
         <Route path="/livin" element={<Livin />} />
         <Route path="/silk" element={<Silk />} />
         <Route path="/skirts-shorts" element={<SkirtsShorts />} />
+         <Route path="/about" element={<About />} />
+                 
 
-        {/* ================= 404 ================= */}
-        <Route path="*" element={<h2 style={{ textAlign: "center", marginTop: "50px" }}>404 Page Not Found</h2>} />
 
       </Routes>
     </Router>
