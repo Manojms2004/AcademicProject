@@ -47,6 +47,7 @@ export default function RituDesigner({ wishlist, toggleWishlist }) {
       rating: 4.5,
       reviews: 1,
       category: formData.category,
+      designer: "ritu",   // ✅ VERY IMPORTANT
     };
 
     setExtraProducts([...extraProducts, newProduct]);
@@ -62,12 +63,12 @@ export default function RituDesigner({ wishlist, toggleWishlist }) {
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
 
-      {/* 🔥 DESIGNER IMAGE + ABOUT SECTION */}
+      {/* 🔥 DESIGNER SECTION */}
       <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
 
         <div className="w-full md:w-2/6">
           <img
-            src="/rd.png"
+            src="https://images.pexels.com/photos/5692479/pexels-photo-5692479.jpeg"
             alt="Ritu Designer"
             className="rounded-2xl shadow-xl border-4 border-gray-200"
           />
@@ -77,20 +78,18 @@ export default function RituDesigner({ wishlist, toggleWishlist }) {
           <h1 className="text-4xl font-bold mb-4 text-gray-800">
             Ritu Designer
           </h1>
-
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            <b>Ritu Designer</b> is a celebrated Indian fashion designer known
-            for blending contemporary design with traditional motifs.
-            Her collections showcase vibrant colours, elegant drapes,
-            and timeless silhouettes.
+          <p className="text-lg text-gray-700 leading-relaxed">
+            <b>Ritu Kumar</b> is one of India’s most celebrated fashion designers,
+            known for reviving traditional Indian textiles and craftsmanship.
+            Her collections beautifully blend heritage embroidery with modern
+            silhouettes, making her a pioneer in Indian couture.
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed">
-            She emphasizes sustainability, empowering artisan communities,
-            and creating collections that resonate globally.
+            From bridal couture to contemporary festive wear, her creations
+            reflect elegance, sustainability, and timeless artistry.
           </p>
 
-          {/* 🔐 Admin Login */}
           {!isAdmin && (
             <button
               onClick={handleAdminAccess}
@@ -102,7 +101,7 @@ export default function RituDesigner({ wishlist, toggleWishlist }) {
         </div>
       </div>
 
-      {/* 🔥 ADMIN PRODUCT FORM */}
+      {/* 🔥 ADMIN FORM */}
       {isAdmin && (
         <div className="bg-white p-6 rounded-xl shadow mb-12 space-y-4">
 
@@ -137,6 +136,7 @@ export default function RituDesigner({ wishlist, toggleWishlist }) {
             className="w-full border p-2 rounded"
           />
 
+          {/* ✅ FIXED CATEGORY (Only 3 types allowed) */}
           <select
             name="category"
             value={formData.category}
@@ -146,8 +146,6 @@ export default function RituDesigner({ wishlist, toggleWishlist }) {
             <option value="cotton">Cotton</option>
             <option value="banarasi">Banarasi</option>
             <option value="wedding">Wedding</option>
-            <option value="ritu">Ritu</option>
-            <option value="neetululla">Neetu Lulla</option>
           </select>
 
           <button
@@ -164,6 +162,7 @@ export default function RituDesigner({ wishlist, toggleWishlist }) {
         wishlist={wishlist}
         toggleWishlist={toggleWishlist}
         extraProducts={extraProducts}
+        designer="ritu"   // ✅ VERY IMPORTANT
       />
 
     </div>

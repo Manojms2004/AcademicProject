@@ -11,10 +11,10 @@ export default function NeetuLulla({ wishlist, toggleWishlist }) {
     name: "",
     img: "",
     price: "",
-    category: "neetululla", // 🔥 default category for Neetu
+    category: "cotton",   // ✅ SAME AS ROHIT
   });
 
-  const ADMIN_PASSWORD = "neetu123"; // 🔐 change if needed
+  const ADMIN_PASSWORD = "neetu123";
 
   const handleAdminAccess = () => {
     const enteredPassword = prompt("Enter Designer Password:");
@@ -44,9 +44,10 @@ export default function NeetuLulla({ wishlist, toggleWishlist }) {
       name: formData.name,
       img: formData.img,
       finalPrice: Number(formData.price),
-      rating: 4.5,
+      rating: 4.6,
       reviews: 1,
-      category: formData.category,
+      category: formData.category,  // ✅ category only
+      designer: "neetululla",       // ✅ IMPORTANT
     };
 
     setExtraProducts([...extraProducts, newProduct]);
@@ -55,19 +56,19 @@ export default function NeetuLulla({ wishlist, toggleWishlist }) {
       name: "",
       img: "",
       price: "",
-      category: "neetululla",
+      category: "cotton",
     });
   };
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
 
-      {/* 🔥 DESIGNER IMAGE + ABOUT SECTION */}
+      {/* DESIGNER SECTION */}
       <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
 
         <div className="w-full md:w-2/6">
           <img
-            src="/neetu.png"
+            src="https://images.pexels.com/photos/5908822/pexels-photo-5908822.jpeg"
             alt="Neetu Lulla"
             className="rounded-2xl shadow-xl border-4 border-gray-200"
           />
@@ -77,20 +78,18 @@ export default function NeetuLulla({ wishlist, toggleWishlist }) {
           <h1 className="text-4xl font-bold mb-4 text-gray-800">
             Neetu Lulla
           </h1>
-
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            <b>Neetu Lulla</b> is a celebrated Indian fashion designer known
-            for blending contemporary design with traditional elegance.
-            Her collections showcase luxurious fabrics, intricate embroidery,
-            and timeless bridal couture.
+           <p className="text-lg text-gray-700 leading-relaxed">
+            <b>Neetu Lulla</b> is one of India’s most celebrated fashion designers,
+            known for reviving traditional Indian textiles and craftsmanship.
+            Her collections beautifully blend heritage embroidery with modern
+            silhouettes, making her a pioneer in Indian couture.
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed">
-            She has styled for films, celebrities, and grand weddings,
-            becoming a global fashion icon in Indian couture.
+            From bridal couture to contemporary festive wear, her creations
+            reflect elegance, sustainability, and timeless artistry.
           </p>
 
-          {/* 🔐 Admin Login */}
           {!isAdmin && (
             <button
               onClick={handleAdminAccess}
@@ -102,7 +101,7 @@ export default function NeetuLulla({ wishlist, toggleWishlist }) {
         </div>
       </div>
 
-      {/* 🔥 ADMIN PRODUCT FORM */}
+      {/* ADMIN FORM */}
       {isAdmin && (
         <div className="bg-white p-6 rounded-xl shadow mb-12 space-y-4">
 
@@ -146,8 +145,6 @@ export default function NeetuLulla({ wishlist, toggleWishlist }) {
             <option value="cotton">Cotton</option>
             <option value="banarasi">Banarasi</option>
             <option value="wedding">Wedding</option>
-            <option value="ritu">Ritu</option>
-            <option value="neetululla">Neetu Lulla</option>
           </select>
 
           <button
@@ -159,11 +156,12 @@ export default function NeetuLulla({ wishlist, toggleWishlist }) {
         </div>
       )}
 
-      {/* 🔥 COLLECTION SECTION */}
+      {/* COLLECTION SECTION */}
       <ShopByOccasion
         wishlist={wishlist}
         toggleWishlist={toggleWishlist}
         extraProducts={extraProducts}
+        designer="neetululla"   // ✅ IMPORTANT
       />
 
     </div>

@@ -11,10 +11,10 @@ export default function RohitBal({ wishlist, toggleWishlist }) {
     name: "",
     img: "",
     price: "",
-    category: "rohitbal", // 🔥 default category for Rohit Bal
+    category: "cotton",   // ✅ SAME AS RITU
   });
 
-  const ADMIN_PASSWORD = "rohit123"; // 🔐 Change if needed
+  const ADMIN_PASSWORD = "rohit123";
 
   const handleAdminAccess = () => {
     const enteredPassword = prompt("Enter Designer Password:");
@@ -47,6 +47,7 @@ export default function RohitBal({ wishlist, toggleWishlist }) {
       rating: 4.7,
       reviews: 1,
       category: formData.category,
+      designer: "rohitbal",   // ✅ IMPORTANT (like ritu)
     };
 
     setExtraProducts([...extraProducts, newProduct]);
@@ -55,19 +56,19 @@ export default function RohitBal({ wishlist, toggleWishlist }) {
       name: "",
       img: "",
       price: "",
-      category: "rohitbal",
+      category: "cotton",
     });
   };
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
 
-      {/* 🔥 DESIGNER IMAGE + ABOUT SECTION */}
+      {/* DESIGNER SECTION */}
       <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
 
         <div className="w-full md:w-2/6">
           <img
-            src="/rohit.png"
+            src="https://images.pexels.com/photos/10509860/pexels-photo-10509860.jpeg"
             alt="Rohit Bal"
             className="rounded-2xl shadow-xl border-4 border-gray-200"
           />
@@ -77,21 +78,17 @@ export default function RohitBal({ wishlist, toggleWishlist }) {
           <h1 className="text-4xl font-bold mb-4 text-gray-800">
             Rohit Bal
           </h1>
-
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            <b>Rohit Bal</b> is a renowned Indian fashion designer celebrated
-            for his opulent designs and luxurious craftsmanship.
-            His collections beautifully combine traditional Indian aesthetics
-            with contemporary silhouettes.
+             <p className="text-lg text-gray-700 leading-relaxed">
+            <b>Rohit Bal</b> is one of India’s most celebrated fashion designers,
+            known for reviving traditional Indian textiles and craftsmanship.
+            Her collections beautifully blend heritage embroidery with modern
+            silhouettes, making her a pioneer in Indian couture.
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed">
-            Known for intricate embroidery, rich fabrics, and royal themes,
-            his creations are often inspired by India’s cultural heritage
-            and timeless elegance.
+            From bridal couture to contemporary festive wear, her creations
+            reflect elegance, sustainability, and timeless artistry.
           </p>
-
-          {/* 🔐 Admin Login */}
           {!isAdmin && (
             <button
               onClick={handleAdminAccess}
@@ -103,7 +100,7 @@ export default function RohitBal({ wishlist, toggleWishlist }) {
         </div>
       </div>
 
-      {/* 🔥 ADMIN PRODUCT FORM */}
+      {/* ADMIN FORM */}
       {isAdmin && (
         <div className="bg-white p-6 rounded-xl shadow mb-12 space-y-4">
 
@@ -138,6 +135,7 @@ export default function RohitBal({ wishlist, toggleWishlist }) {
             className="w-full border p-2 rounded"
           />
 
+          {/* ✅ SAME CATEGORY SETUP AS RITU */}
           <select
             name="category"
             value={formData.category}
@@ -147,9 +145,6 @@ export default function RohitBal({ wishlist, toggleWishlist }) {
             <option value="cotton">Cotton</option>
             <option value="banarasi">Banarasi</option>
             <option value="wedding">Wedding</option>
-            <option value="ritu">Ritu</option>
-            <option value="neetululla">Neetu Lulla</option>
-            <option value="rohitbal">Rohit Bal</option>
           </select>
 
           <button
@@ -161,11 +156,12 @@ export default function RohitBal({ wishlist, toggleWishlist }) {
         </div>
       )}
 
-      {/* 🔥 COLLECTION SECTION */}
+      {/* COLLECTION SECTION */}
       <ShopByOccasion
         wishlist={wishlist}
         toggleWishlist={toggleWishlist}
         extraProducts={extraProducts}
+        designer="rohitbal"   // ✅ IMPORTANT
       />
 
     </div>

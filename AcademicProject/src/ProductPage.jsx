@@ -1,5 +1,5 @@
 // src/Components/ProductPage.jsx
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { allProducts } from "./ProductsData";
 import { FaStar, FaHeart, FaRegHeart } from "react-icons/fa";
@@ -9,7 +9,15 @@ export default function ProductPage({ wishlist = [], toggleWishlist }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // 🔥 Merge static + dynamically added products
+  const [showForm, setShowForm] = useState(false);
+
+  const [requestData, setRequestData] = useState({
+    name: "",
+    phone: "",
+    message: "",
+  });
+
+  // 🔥 Merge static + dynamic products
   const mergedProducts = [
     ...allProducts,
     ...(location.state?.extraProducts || []),
@@ -22,12 +30,28 @@ export default function ProductPage({ wishlist = [], toggleWishlist }) {
   if (!product)
     return <div className="p-6 text-center">Product not found</div>;
 
+  /* ============================= */
+  /* ===== RELATED PRODUCTS LOGIC */
+  /* ============================= */
+
   const relatedProducts = mergedProducts
-    .filter(
-      (p) =>
+    .filter((p) => {
+      // If product has designer → match category + designer
+      if (product.designer) {
+        return (
+          p.category === product.category &&
+          p.designer === product.designer &&
+          p.id !== product.id
+        );
+      }
+
+      // If product has no designer → match only category & no designer
+      return (
         p.category === product.category &&
+        !p.designer &&
         p.id !== product.id
-    )
+      );
+    })
     .slice(0, 4);
 
   const formatPrice = (amount) =>
@@ -37,29 +61,52 @@ export default function ProductPage({ wishlist = [], toggleWishlist }) {
       maximumFractionDigits: 0,
     }).format(amount);
 
-  /* ===== WhatsApp ===== */
-  const defaultNumber = "919876543210";
+  /* ============================= */
+  /* ===== Request Change Logic === */
+  /* ============================= */
 
-  const whatsappMessage = `
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setRequestData({ ...requestData, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    if (!requestData.name || !requestData.phone) {
+      alert("Please enter Name and Phone Number");
+      return;
+    }
+
+    const finalMessage = `
 Hello,
 
 I would like to request a change for:
 
-Product Name: ${product.name}
-Category: ${product.category}
+Product: ${product.name}
 Price: ₹${product.finalPrice}
-Rating: ${product.rating}⭐
+Category: ${product.category}
+
+Customer Name: ${requestData.name}
+Phone: ${requestData.phone}
+
+Requested Changes:
+${requestData.message || "No details provided"}
 
 Thank you.
 `;
 
-  const whatsappLink = `https://wa.me/${defaultNumber}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+    const whatsappLink = `https://wa.me/919876543210?text=${encodeURIComponent(
+      finalMessage
+    )}`;
+
+    window.open(whatsappLink, "_blank");
+
+    setShowForm(false);
+  };
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
 
+      {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
         className="mb-6 px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
@@ -106,7 +153,7 @@ Thank you.
             </span>
           </div>
 
-          <div className="space-y-1">
+          <div>
             <div className="text-3xl font-semibold text-gray-900">
               {formatPrice(product.finalPrice)}
             </div>
@@ -124,7 +171,6 @@ Thank you.
           </div>
 
           <div className="flex gap-4 mt-4">
-
             <button
               onClick={() =>
                 navigate("/checkout", { state: { product } })
@@ -134,18 +180,72 @@ Thank you.
               Buy Now
             </button>
 
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => setShowForm(true)}
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition"
             >
               Request Change
-            </a>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      {/* REQUEST CHANGE MODAL */}
+      {showForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-8 rounded-xl w-[90%] md:w-[450px] space-y-4">
+
+            <h2 className="text-xl font-semibold">
+              Request Outfit Change
+            </h2>
+
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={requestData.name}
+              onChange={handleInputChange}
+              className="w-full border p-2 rounded"
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              value={requestData.phone}
+              onChange={handleInputChange}
+              className="w-full border p-2 rounded"
+            />
+
+            <textarea
+              name="message"
+              placeholder="Describe what changes you want in the outfit..."
+              value={requestData.message}
+              onChange={handleInputChange}
+              className="w-full border p-2 rounded"
+              rows="4"
+            />
+
+            <div className="flex justify-between">
+              <button
+                onClick={() => setShowForm(false)}
+                className="px-4 py-2 bg-gray-400 text-white rounded"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleSubmit}
+                className="px-4 py-2 bg-green-600 text-white rounded"
+              >
+                Submit
+              </button>
+            </div>
 
           </div>
         </div>
-      </div>
+      )}
 
       {/* RELATED PRODUCTS */}
       <div className="max-w-6xl mx-auto mt-14">

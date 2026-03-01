@@ -14,6 +14,7 @@ export default function ShopByOccasion({
   wishlist = [],
   toggleWishlist = () => {},
   extraProducts = [],
+  designer = null,   // 🔥 important
 }) {
   const [selectedCategory, setSelectedCategory] = useState("cotton");
   const scrollRef = useRef(null);
@@ -34,20 +35,25 @@ export default function ShopByOccasion({
     }
   };
 
-  // Merge static + extra designer products
+  // 🔥 Merge all static + dynamic
   const mergedProducts = [...allProducts, ...extraProducts];
 
-  const productsToShow =
-    selectedCategory === "all"
-      ? mergedProducts
-      : mergedProducts.filter(
-          (product) => product.category === selectedCategory
-        );
+  // 🔥 FINAL FILTER LOGIC
+  const productsToShow = mergedProducts.filter((product) => {
+    // Designer page
+    if (designer) {
+      return (
+        product.designer === designer &&
+        product.category === selectedCategory
+      );
+    }
 
-  const containerClass =
-    selectedCategory === "all"
-      ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4"
-      : "flex space-x-4 overflow-x-auto scroll-smooth px-8 custom-scrollbar";
+    // Homepage (no designer)
+    return (
+      !product.designer &&
+      product.category === selectedCategory
+    );
+  });
 
   return (
     <div className="w-full bg-white p-6 relative">
@@ -55,7 +61,7 @@ export default function ShopByOccasion({
         Shop by Occasion
       </h2>
 
-      {/* ✅ CATEGORY BUTTONS (Ritu & Neetululla Removed) */}
+      {/* CATEGORY BUTTONS */}
       <div className="flex gap-3 justify-center mb-6 flex-wrap">
         {["cotton", "banarasi", "wedding"].map((cat) => (
           <button
@@ -73,17 +79,18 @@ export default function ShopByOccasion({
       </div>
 
       {/* LEFT SCROLL */}
-      {selectedCategory !== "all" && (
-        <button
-          onClick={() => scroll("left")}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow z-10"
-        >
-          <FaChevronLeft />
-        </button>
-      )}
+      <button
+        onClick={() => scroll("left")}
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow z-10"
+      >
+        <FaChevronLeft />
+      </button>
 
       {/* PRODUCTS */}
-      <div ref={scrollRef} className={containerClass}>
+      <div
+        ref={scrollRef}
+        className="flex space-x-4 overflow-x-auto scroll-smooth px-8 custom-scrollbar"
+      >
         {productsToShow.length === 0 ? (
           <p className="text-center w-full text-gray-500">
             No products found.
@@ -97,9 +104,7 @@ export default function ShopByOccasion({
               <div
                 className="relative overflow-hidden rounded-lg h-[300px] cursor-pointer"
                 onClick={() =>
-                  navigate(`/product/${product.id}`, {
-                    state: { extraProducts },
-                  })
+                  navigate(`/product/${product.id}`)
                 }
               >
                 <img
@@ -139,24 +144,12 @@ export default function ShopByOccasion({
       </div>
 
       {/* RIGHT SCROLL */}
-      {selectedCategory !== "all" && (
-        <button
-          onClick={() => scroll("right")}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow z-10"
-        >
-          <FaChevronRight />
-        </button>
-      )}
-
-      {/* VIEW ALL BUTTON */}
-      <div className="flex justify-center mt-8">
-        <button
-          onClick={() => setSelectedCategory("all")}
-          className="px-8 py-3 border border-black rounded-md hover:bg-black hover:text-white transition"
-        >
-          VIEW ALL
-        </button>
-      </div>
+      <button
+        onClick={() => scroll("right")}
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow z-10"
+      >
+        <FaChevronRight />
+      </button>
     </div>
   );
 }
