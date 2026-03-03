@@ -126,32 +126,32 @@ export default function HomePage() {
         </div>
       </div>
 
-     {/* Banner */}
-<div className="relative w-full overflow-hidden mt-4">
-  <img
-    src={images[showImg]}
-    alt="carousel"
-    className="w-full object-cover transition-all duration-500"
-  />
+      {/* Banner */}
+      <div className="relative w-full overflow-hidden mt-4">
+        <img
+          src={images[showImg]}
+          alt="carousel"
+          className="w-full object-cover transition-all duration-500"
+        />
 
-  {/* Left Arrow */}
-  <button
-    className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-white bg-black bg-opacity-40 p-2 rounded-full hover:bg-opacity-60"
-    onClick={() =>
-      setImg(prev => (prev === 0 ? images.length - 1 : prev - 1))
-    }
-  >
-    <FaChevronLeft />
-  </button>
+        {/* Left Arrow */}
+        <button
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-white bg-black bg-opacity-40 p-2 rounded-full hover:bg-opacity-60"
+          onClick={() =>
+            setImg(prev => (prev === 0 ? images.length - 1 : prev - 1))
+          }
+        >
+          <FaChevronLeft />
+        </button>
 
-  {/* Right Arrow */}
-  <button
-    className="absolute right-4 top-1/2 -translate-y-1/2 text-2xl text-white bg-black bg-opacity-40 p-2 rounded-full hover:bg-opacity-60"
-    onClick={() => setImg(prev => (prev + 1) % images.length)}
-  >
-    <FaChevronRight />
-  </button>
-</div>
+        {/* Right Arrow */}
+        <button
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-2xl text-white bg-black bg-opacity-40 p-2 rounded-full hover:bg-opacity-60"
+          onClick={() => setImg(prev => (prev + 1) % images.length)}
+        >
+          <FaChevronRight />
+        </button>
+      </div>
 
 
       {/* Marquee */}
