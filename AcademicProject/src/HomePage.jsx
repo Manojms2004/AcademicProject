@@ -12,13 +12,14 @@ import {
 } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 
+import { FaStar, FaRegHeart } from "react-icons/fa";
 import Contect from "./Contect";
 import Footer from "./Footer";
 
 const images = [
   "https://images.pexels.com/photos/6347952/pexels-photo-6347952.jpeg",
   "https://images.pexels.com/photos/8770070/pexels-photo-8770070.jpeg",
-  "https://images.pexels.com/photos/5710222/pexels-photo-5710222.jpeg"
+  "https://images.pexels.com/photos/914930/pexels-photo-914930.jpeg"
 ];
 
 const categories = [
@@ -68,7 +69,7 @@ function StoreLocatorBanner() {
   }, []);
 
   return (
-    <div className="w-full bg-gray-50 flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10">
+    <div className="w-full bg-gray-50 flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 mt-4">
       <div className="text-center md:text-left md:w-1/2">
         <h2 className="text-2xl md:text-4xl font-light">
           FIND THE <span className="font-bold">NEAREST STORE</span>
@@ -127,11 +128,11 @@ export default function HomePage() {
       </div>
 
       {/* Banner */}
-      <div className="relative w-full overflow-hidden mt-4">
+      <div className="relative w-full overflow-hidden p-10">
         <img
           src={images[showImg]}
           alt="carousel"
-          className="w-full object-cover transition-all duration-500"
+          className="w-full h-150 object-cover transition-all duration-500 rounded-2xl"
         />
 
         {/* Left Arrow */}
@@ -159,22 +160,160 @@ export default function HomePage() {
 
       {/* Categories */}
       <div className="py-8 px-6">
-        <h2 className="text-4xl font-semibold mb-4">Designers Category</h2>
-        <div className="flex gap-40 ml-60 overflow-x-auto no-scrollbar">
+        {/* Centered Heading */}
+        <h2 className="text-4xl font-semibold mb-8 text-center">
+          Designers Category
+        </h2>
+
+        {/* Cards Container */}
+        <div className="flex flex-wrap justify-center gap-20">
           {categories.map((cat, i) => (
             <div
               key={i}
-              className="cursor-pointer text-center"
               onClick={() => navigate(cat.path)}
+              className="cursor-pointer bg-white rounded-2xl shadow-lg p-6 w-60 text-center 
+                   hover:shadow-2xl hover:-translate-y-2 transition duration-300"
             >
               <img
                 src={cat.img}
                 alt={cat.name}
-                className="w-28 h-28 rounded-2xl border shadow-md hover:scale-110 transition"
+                className="w-28 h-28 mx-auto rounded-xl object-cover"
               />
-              <p className="mt-2 font-medium">{cat.name}</p>
+
+              <p className="mt-4 font-semibold text-lg">
+                {cat.name}
+              </p>
             </div>
           ))}
+        </div>
+      </div>
+      <div className="px-8">
+
+        {/* Heading */}
+        <h2 className="text-4xl font-semibold mb-8 text-center">
+          Recently Added Product
+        </h2>
+
+        <div className="flex justify-around space-x-4 overflow-x-auto scroll-smooth custom-scrollbar">
+
+          {/* Product Card 1 */}
+          <div className="min-w-[250px] border rounded-xl shadow-sm bg-white p-2 hover:shadow-lg transition-all duration-300">
+
+            <div className="relative overflow-hidden rounded-lg h-[300px]">
+              <img
+                src="https://images.unsplash.com/photo-1520975916090-3105956dac38"
+                alt="Product"
+                className="w-full h-full object-cover transition-transform hover:scale-110"
+              />
+
+              <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow">
+                <FaRegHeart />
+              </button>
+            </div>
+
+            <div className="p-2">
+              <p className="font-medium">Floral Designer Gown</p>
+              <p className="text-red-600 font-semibold">
+                ₹2,999
+              </p>
+              <div className="flex items-center text-yellow-500 text-sm">
+                <FaStar className="mr-1" />
+                4.5
+              </div>
+              <button className="mt-3 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition duration-300">
+                View
+              </button>
+            </div>
+          </div>
+
+          {/* Product Card 2 */}
+          <div className="min-w-[250px] border rounded-xl shadow-sm bg-white p-2 hover:shadow-lg transition-all duration-300">
+
+            <div className="relative overflow-hidden rounded-lg h-[300px]">
+              <img
+                src="https://images.unsplash.com/photo-1520975916090-3105956dac38"
+                alt="Product"
+                className="w-full h-full object-cover transition-transform hover:scale-110"
+              />
+
+              <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow">
+                <FaRegHeart />
+              </button>
+            </div>
+
+            <div className="p-2">
+              <p className="font-medium">Floral Designer Gown</p>
+              <p className="text-red-600 font-semibold">
+                ₹2,999
+              </p>
+              <div className="flex items-center text-yellow-500 text-sm">
+                <FaStar className="mr-1" />
+                4.5
+              </div>
+              <button className="mt-3 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition duration-300">
+                View
+              </button>
+            </div>
+          </div>
+          {/* Product Card 2 */}
+          <div className="min-w-[250px] border rounded-xl shadow-sm bg-white p-2 hover:shadow-lg transition-all duration-300">
+
+            <div className="relative overflow-hidden rounded-lg h-[300px]">
+              <img
+                src="https://images.unsplash.com/photo-1520975916090-3105956dac38"
+                alt="Product"
+                className="w-full h-full object-cover transition-transform hover:scale-110"
+              />
+
+              <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow">
+                <FaRegHeart />
+              </button>
+            </div>
+
+            <div className="p-2">
+              <p className="font-medium">Floral Designer Gown</p>
+              <p className="text-red-600 font-semibold">
+                ₹2,999
+              </p>
+              <div className="flex items-center text-yellow-500 text-sm">
+                <FaStar className="mr-1" />
+                4.5
+              </div>
+              <button className="mt-3 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition duration-300">
+                View
+              </button>
+            </div>
+          </div>
+          {/* Product Card 2 */}
+          <div className="min-w-[250px] border rounded-xl shadow-sm bg-white p-2 hover:shadow-lg transition-all duration-300">
+
+            <div className="relative overflow-hidden rounded-lg h-[300px]">
+              <img
+                src="https://images.unsplash.com/photo-1520975916090-3105956dac38"
+                alt="Product"
+                className="w-full h-full object-cover transition-transform hover:scale-110"
+              />
+
+              <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow">
+                <FaRegHeart />
+              </button>
+            </div>
+
+            <div className="p-2">
+              <p className="font-medium">Floral Designer Gown</p>
+              <p className="text-red-600 font-semibold">
+                ₹2,999
+              </p>
+              <div className="flex items-center text-yellow-500 text-sm">
+                <FaStar className="mr-1" />
+                4.5
+              </div>
+              <button className="mt-3 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition duration-300">
+                View
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
 

@@ -99,7 +99,7 @@ function SignupPage() {
 
             {/* Signup button (disabled when form invalid) */}
             <button
-              className="w-full bg-blue-400 hover:bg-blue-500 text-white font-semibold py-2 rounded-full transition duration-200 disabled:opacity-50"
+              className="w-full bg-blue-400 hover:bg-blue-500 text-white font-semibold py-2 rounded-full transition duration-200 disabled:opacity-50 cursor-pointer"
               onClick={() => {
                 if (!isFormValid) return;
                 alert(`Welcome ${showName}! 🎉 Your journey at TrendyThreads starts here.`);

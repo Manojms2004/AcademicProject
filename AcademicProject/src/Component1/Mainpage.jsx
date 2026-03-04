@@ -23,11 +23,11 @@ function Mainpage() {
       <div className="flex space-x-4 justify-center mt-80">
         <button
           type="button"
-          className="px-10 py-2 bg-transparent border-3 border-black text-2xl text-black rounded-md hover:bg-white hover:text-black transition"
+          className="px-10 py-2 bg-transparent border-3 border-black text-2xl text-black rounded-md hover:bg-white hover:text-black transition cursor-pointer"
           onClick={() =>{
             
            navigate('/login');}} > Login </button>
-        <button type="button" className="px-10 py-2 bg-transparent border-3 border-black text-2xl text-black rounded-md hover:bg-white hover:text-black transition"
+        <button type="button" className="px-10 py-2 bg-transparent border-3 border-black text-2xl text-black rounded-md hover:bg-white hover:text-black transition cursor-pointer"
           onClick={() => {
            
             navigate('/signup');}}>Signup </button>

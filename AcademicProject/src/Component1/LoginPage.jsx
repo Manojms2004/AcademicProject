@@ -76,7 +76,7 @@ function LoginPage() {
 
               {/* Login Button */}
               <button 
-                className="w-full bg-blue-400 hover:bg-blue-500 text-white py-2 rounded disabled:opacity-50" 
+                className="w-full bg-blue-400 hover:bg-blue-500 text-white py-2 rounded disabled:opacity-50 cursor-pointer" 
                 disabled={!isFormValid}
                 onClick={()=>{
                    alert("Welcome 🎉 Your journey at TrendyThreads starts here.");
